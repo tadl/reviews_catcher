@@ -25,6 +25,9 @@ set :allow_origin, :any
 set :allow_methods, [:get, :post, :options]
 set :expose_headers, ['Content-Type']
 
+#Comment out when testing
+set :environment, :production
+
 route :get, :post, '/' do
 	cross_origin
 	content_type :json
