@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'sinatra/multi_route'
+require 'sinatra/cross_origin'
 require 'open-uri'
 require 'json'
 require 'library_stdnums'
@@ -8,7 +9,12 @@ require 'library_stdnums'
 set :port, 3000
 set :bind, '0.0.0.0'
 
+set :allow_origin, :any
+set :allow_methods, [:get, :post, :options]
+set :expose_headers, ['Content-Type']
+
 route :get, :post, '/' do
+	cross_origin
 	content_type :json
 	if params[:isbn]
 		isbns  = ''
