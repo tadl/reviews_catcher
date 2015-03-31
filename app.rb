@@ -6,6 +6,13 @@ require 'json'
 require 'library_stdnums'
 require 'dalli'
 
+#Comment out when testing
+set :environment, :production
+#
+set :allow_origin, :any
+set :allow_methods, [:get, :post, :options]
+set :expose_headers, ['Content-Type']
+
 configure :development, :test do
 	set :port, 3000
 	set :bind, '0.0.0.0'
@@ -20,13 +27,6 @@ cache = Dalli::Client.new((ENV["MEMCACHIER_SERVERS"] || "").split(","),
                      :socket_failure_delay => 0.2
                     })
 end
-
-set :allow_origin, :any
-set :allow_methods, [:get, :post, :options]
-set :expose_headers, ['Content-Type']
-
-#Comment out when testing
-set :environment, :production
 
 route :get, :post, '/' do
 	cross_origin
