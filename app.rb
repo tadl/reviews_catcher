@@ -55,7 +55,7 @@ route :get, :post, '/' do
 				message = {:message => "no reviews found"}
 			end
 			if self.class.production?
-				cache.set(params[:isbn], "cached you smarty!")
+				cache.set(params[:isbn], "cached you smarty!", ttl=30.seconds)
 			end
 		end
 	else
