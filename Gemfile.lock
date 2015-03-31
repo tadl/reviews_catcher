@@ -14,6 +14,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     backports (3.6.4)
+    dalli (2.7.4)
     library_stdnums (1.4.1)
     multi_json (1.11.0)
     rack (1.6.0)
@@ -32,6 +33,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dalli
   library_stdnums
   sinatra
   sinatra-contrib!
