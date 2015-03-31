@@ -18,6 +18,10 @@ configure :development, :test do
 	set :bind, '0.0.0.0'
 end
 
+configure :production do
+  require 'newrelic_rpm'
+end
+
 route :get, :post, '/' do
 	cross_origin
 	content_type :json

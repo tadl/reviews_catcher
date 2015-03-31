@@ -17,6 +17,7 @@ GEM
     dalli (2.7.4)
     library_stdnums (1.4.1)
     multi_json (1.11.0)
+    newrelic_rpm (3.9.5.251)
     rack (1.6.0)
     rack-protection (1.5.3)
       rack
@@ -35,6 +36,7 @@ PLATFORMS
 DEPENDENCIES
   dalli
   library_stdnums
+  newrelic_rpm
   sinatra
   sinatra-contrib!
   sinatra-cross_origin
