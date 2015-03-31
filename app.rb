@@ -18,7 +18,7 @@ configure :development, :test do
 	set :bind, '0.0.0.0'
 end
 
-configure :production do
+if self.class.production?
 cache = Dalli::Client.new((ENV["MEMCACHIER_SERVERS"] || "").split(","),
                     {:username => ENV["MEMCACHIER_USERNAME"],
                      :password => ENV["MEMCACHIER_PASSWORD"],
