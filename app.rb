@@ -6,9 +6,6 @@ require 'json'
 require 'library_stdnums'
 require 'dalli'
 
-#Comment out when testing
-#set :environment, :production
-#
 set :allow_origin, :any
 set :allow_methods, [:get, :post, :options]
 set :expose_headers, ['Content-Type']
@@ -36,7 +33,7 @@ route :get, :post, '/' do
                     })
 	end
 
-	if params[:isbn] && params[:isbn] != nil
+	if params[:isbn] && params[:isbn] != ''
 		message = cache.get(params[:isbn]) rescue nil
 		if !message
 			isbns  = ''
