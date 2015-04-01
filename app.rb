@@ -7,7 +7,7 @@ require 'library_stdnums'
 require 'dalli'
 
 #Comment out when testing
-set :environment, :production
+#set :environment, :production
 #
 set :allow_origin, :any
 set :allow_methods, [:get, :post, :options]
@@ -36,7 +36,7 @@ route :get, :post, '/' do
                     })
 	end
 
-	if params[:isbn]
+	if params[:isbn] && params[:isbn] != nil
 		message = cache.get(params[:isbn]) rescue nil
 		if !message
 			isbns  = ''
@@ -69,12 +69,10 @@ route :get, :post, '/' do
 end
 
 def rating_to_stars(rounded)
-	base = '&#9733;' * rounded.to_i
+	stars = '&#9733;' * rounded.to_i
 	remainder = rounded.to_i - rounded
 	if remainder != 0
-		stars = base + '&frac12;'
-	else
-		stars = base
+		stars = stars + '&frac12;'
 	end
 	return stars
 end
